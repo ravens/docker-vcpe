@@ -2,9 +2,10 @@ version: '2'
 
 networks:
   lan:
-    driver: macvlan
-    driver_opts:
-      parent: enp0s25.87
+    #driver: macvlan
+    #driver_opts:
+    #  parent: enp0s25.87
+    driver: bridge
     ipam:
      config:
        - subnet: 192.168.1.0/24
@@ -21,8 +22,8 @@ services:
     volumes:
      - ./config:/etc/config
     ports:
-      - 8080:80
-      - 2222:22
+      - "8080:80"
+      - "2222:22"
     networks:
       lan:
         ipv4_address: 192.168.1.1
