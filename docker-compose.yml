@@ -22,6 +22,7 @@ services:
      - ./config:/etc/config
     ports:
       - 8080:80
+      - 2222:22
     networks:
       lan:
         ipv4_address: 192.168.1.1
