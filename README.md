@@ -20,12 +20,16 @@ Web interface shoud be available as http://localhost:8080
 
 * Add volumes as mentioned in the flash_keep section of the config/luci file.
 * fix firewall
+* fix network services. Thought it was working but not.
 * fix WAN IP address
 * fix LAN IP address gateway scheme. Impact of using IPAM as bootstrap, and then Luci to modify the IP address
 
 ## caveats
 
 Openwrt has a lot of preinit stuff corresponding to the various boards it aims to support. A lot of work has to be carried out to alter /etc/preinit, /lib/preinit in order to have a functional and secure by default environement. 
+
+docker-compose starts the interface in alphabetical order; hence dockervcpe_vcpe_wan will be eth1. 
+
 
 ## related work
 

@@ -10,15 +10,17 @@ RUN mkdir /var/lock
 RUN mkdir /var/run
 
 # simplified version of https://github.com/m-creations/docker-openwrt-x64/blob/master/Dockerfile
-RUN echo "4" > /tmp/debug_level &&\
-    rm /lib/preinit/* &&\
-    echo > /lib/preinit/00_empty_dummy_script &&\
-    /etc/init.d/gpio_switch disable &&\
-    /etc/init.d/led disable &&\
-    /etc/init.d/odhcpd disable &&\
-    /etc/init.d/sysctl disable &&\
-    /etc/init.d/sysfixtime disable &&\
-    /etc/init.d/sysntpd disable
+RUN echo "4" > /tmp/debug_level
+RUN rm /lib/preinit/*
+RUN echo > /lib/preinit/00_empty_dummy_script 
+RUN /etc/init.d/gpio_switch disable 
+RUN /etc/init.d/led disable 
+RUN /etc/init.d/cron disable
+RUN /etc/init.d/network disable
+RUN /etc/init.d/odhcpd disable
+RUN /etc/init.d/sysctl disable
+RUN /etc/init.d/sysfixtime disable 
+RUN /etc/init.d/sysntpd disable
 
 RUN opkg update
 RUN opkg install dnsmasq
